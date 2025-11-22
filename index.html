@@ -681,6 +681,8 @@
         }
     </style>
 </head>
+<!-- Popunder Ads Script -->
+<script type='text/javascript' src='//pl28108934.effectivegatecpm.com/47/9f/fb/479ffbe2a29f2d9a72f074397823b3fc.js'></script>
 <body>
     <!-- Header -->
     <header>
@@ -1122,4 +1124,134 @@
                 <button class="btn btn-primary btn-large">
                     <i class="fab fa-google"></i> Connect Google Ads
                 </button>
-            </
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AdProfit</h3>
+                    <p>Advanced advertising platform with seamless Google Ads integration for maximum revenue generation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="#">Ads Solutions</a></li>
+                        <li><a href="#">Google Ads Integration</a></li>
+                        <li><a href="#">Analytics</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AdProfit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // Button functionality
+        document.getElementById('adsBtn').addEventListener('click', () => {
+            tabBtns[0].click();
+            window.scrollTo({top: document.querySelector('.platform-section').offsetTop - 80, behavior: 'smooth'});
+        });
+        
+        document.getElementById('googleAdsBtn').addEventListener('click', () => {
+            tabBtns[1].click();
+            window.scrollTo({top: document.querySelector('.platform-section').offsetTop - 80, behavior: 'smooth'});
+        });
+        
+        document.getElementById('heroAdsBtn').addEventListener('click', () => {
+            tabBtns[0].click();
+            window.scrollTo({top: document.querySelector('.platform-section').offsetTop - 80, behavior: 'smooth'});
+        });
+        
+        document.getElementById('heroGoogleAdsBtn').addEventListener('click', () => {
+            tabBtns[1].click();
+            window.scrollTo({top: document.querySelector('.platform-section').offsetTop - 80, behavior: 'smooth'});
+        });
+        
+        // Animate stats counter
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Animate hero stats when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statElements = document.querySelectorAll('.stat-number');
+                    statElements.forEach((el, index) => {
+                        const values = [12500000, 50000, 95];
+                        setTimeout(() => {
+                            animateValue(el, 0, values[index], 2000);
+                        }, index * 500);
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.hero-stats'));
+    </script>
+</body>
+</html>
